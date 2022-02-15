@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Counter from './components/Counter'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      mounted: true
+    }
+  }
+  handleMount() {
+    this.setState({ mounted: true })
+  }
+  unhandleMount() {
+    this.setState({ mounted: true })
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.handleMount}>Mount my Componente</button>
+        <button onClick={() => this.unhandleMount}>unMount my Componente</button>
+        {this.state.mounted ? <Counter /> : null}
+      </div>
+    )
+  }
 }
-
-export default App;
+export default App
